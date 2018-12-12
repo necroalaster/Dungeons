@@ -1,0 +1,2 @@
+love Game
+exit

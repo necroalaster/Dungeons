@@ -1,6 +1,6 @@
 local PopUpMenu = {}
 
-function PopUpMenu:create(list, posX, posY, title, width)
+function PopUpMenu:create(list, posX, posY, title, hAligment, vAligment, fontSize,border, width)
 	local self = {}
 	
 	self.list = {}

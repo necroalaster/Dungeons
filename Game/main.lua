@@ -1,5 +1,7 @@
 local currentScene = nil
+local tile1 = nil
 local Scene = require('Scene.IntroScene')
+local Tile = require('Tiles.SceneTile')
 
 function love.load()
   --Load save if any
@@ -11,10 +13,18 @@ function love.load()
   currentScene = Scene:create("Images/grass.jpg")
   currentScene:load()
   
+  --Test
+  tile1 = Tile:new()
+  tile1:load("Images/Crystal.png")
 end
 
 function love.update(dt)
   	currentScene:update(dt)
+  	
+  	--Test only
+  	if (dt % 2) == 0 then
+  		tile1:setPosition(1, 1)
+  	end
 end
 
 function love.draw(dt)
@@ -22,6 +32,10 @@ function love.draw(dt)
 	
 	if currentScene ~= nil then
 		currentScene:draw(dt)
+	end
+	
+	if tile1 ~= nil then
+		tile1:draw()
 	end
 end
 

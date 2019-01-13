@@ -10,21 +10,21 @@ function love.load()
   love.graphics.clear(0,0,0,0)
   
   --Load introscene just for test
-  currentScene = Scene:create("Images/grass.jpg")
-  currentScene:load()
+  currentScene = Scene:new()
+  currentScene:load("Images/grass.jpg")
   
   --Test
-  tile1 = Tile:new()
-  tile1:load("Images/Crystal.png")
+  --tile1 = Tile:new()
+  --tile1:load("Images/Crystal.png")
 end
 
 function love.update(dt)
   	currentScene:update(dt)
   	
   	--Test only
-  	if (dt % 2) == 0 then
-  		tile1:setPosition(1, 1)
-  	end
+  	--if (dt % 2) == 0 then
+  	--	tile1:setPosition(1, 1)
+  	--end
 end
 
 function love.draw(dt)
@@ -34,9 +34,9 @@ function love.draw(dt)
 		currentScene:draw(dt)
 	end
 	
-	if tile1 ~= nil then
-		tile1:draw()
-	end
+	--if tile1 ~= nil then
+	--	tile1:draw()
+    --end
 end
 
 function love.keypressed(key) --works
@@ -49,7 +49,7 @@ function love.keypressed(key) --works
 		
 		if newScene ~= nil then
 			currentScene = newScene
-			currentScene:load()	
+			--currentScene:load()	
 		end
 	end
 end

@@ -1,30 +1,27 @@
-local Scene = {}
+Scene = {_background = nil}
 
-function Scene:create(backgroundPath)
-	local self = {}
-	
-	self._backgroundPath = backgroundPath
-	self._background = nil
+function Scene:new (o)
+	o = o or {}
+  	setmetatable(o, self)
+  	self.__index = self
+  	return o
+end
 
-	function self:load()
-	  self._background = love.graphics.newImage(self._backgroundPath)
+function Scene:draw()
+	if _background ~= nil then
+		love.graphics.draw(_background,0,0, _background.Width, _background.Height)
 	end
-	
-	function self:update(dt)
-	  
-	end
-	
-	function self:draw()
-		if self._background ~= nil then
-			love.graphics.draw(self._background,0,0, self._background.Width, self._background.Height)
-		end
-	end
-	
-	function self:keypressed(key)
-	
-	end
-	
-	return self
+end
+
+function Scene:update(dt)
+end
+
+function Scene:load(backgroundPath)
+  _background = love.graphics.newImage(backgroundPath)
+end
+
+function Scene:keypressed(key)
+
 end
 
 return Scene
